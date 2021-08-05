@@ -20,7 +20,7 @@
   <body>
     <div class="center-screen todo">
       <header>
-        <h2>ToDo App</h2>
+        <h2>Create New Query</h2>
       </header>
 
       <main>
@@ -83,36 +83,46 @@
     <div class="sidebar">
       <header>
         <h1>
-          List
+          My ToDo List
         </h1>
       </header>
-      <% for (let i=0; i<1; i++) { %>
+      <% for (let i of list_item) { %> 
         <div class="list-item">
-          <div class="d-flex bd-highlight">
+          <div class="list-item-div bd-highlight">
 
-            <div class="p-2 flex-fill bd-highlight">
-              <p class="p-1 no-margin">Hello there! My First List item</p>
+            <div class="p-2 descrip bd-highlight">
+              <p class="p-1 no-margin"> <%= i.description %> </p>
 
               <div class="d-flex flex-row">
                 <i class="fas fa-calendar-alt fa-lg p-2"></i>
-                <p class="p-1 no-margin"> 13 Aug 2021</p>
+                <p class="p-1 no-margin"> <%= i.date.toDateString() %> </p>
               </div>
             </div>
 
-            <div class="p-2 flex-fill bd-highlight">
-              <p class="btn btn-info btn-center">Work</p>
+            <div class="p-2 catego bd-highlight  ">
+              <% if(i.category == 'Personal') {%>
+                  <p class="btn btn-primary btn-center btn-width"> <%= i.category %></p>
+              <%} else if(i.category == 'Work') {%>
+                    <p class="btn btn-success btn-center btn-width"> <%= i.category %></p>
+              <%} else if(i.category == 'School') {%>
+                <p class="btn btn-dark btn-center btn-width"> <%= i.category %></p>
+              <%} else if(i.category == 'Cleaning') {%>
+                  <p class="btn btn-info btn-center btn-width"> <%= i.category %></p>
+              <%} else {%>
+                <p class="btn btn-warning btn-center btn-width"> <%= i.category %></p>
+              <%}%>
             </div>
 
-            <div class="p-2 flex-fill bd-highlight">
-              <button type="button" class="btn btn-danger btn-center">
+            <div class="p-2 delet bd-highlight">
+              <a href="/delete-list/deletelist/?id=<%= i._id %>" role="button" class="btn btn-danger btn-center">
                 <i class="fas fa-trash-alt fa-lg"></i>
-              </button>
+              </a>
             </div>
 
           </div>
         </div>
       <%}%>
-      
+       
     </div>
 
     <script

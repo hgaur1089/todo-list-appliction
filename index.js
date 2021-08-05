@@ -3,7 +3,7 @@ const app = express();
 const port = 8000;
 
 //use express router
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use('/', require('./routes'));
 
 //set up view engine
