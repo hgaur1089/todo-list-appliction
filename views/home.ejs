@@ -16,14 +16,15 @@
     />
     <link rel="stylesheet" href="/css/home.css" />
   </head>
+
   <body>
-    <div class="center-screen">
+    <div class="center-screen todo">
       <header>
         <h2>ToDo App</h2>
       </header>
 
       <main>
-        <form action="" class="form-container">
+        <form action="/create-list/createList" method="POST" class="form-container">
         
         <div class="form-description">
             <label for="description" class="form-label">DESCRIPTION</label>
@@ -32,6 +33,7 @@
                 id="description"
                 placeholder="What do you need to do?"
                 rows="3"
+                name="description"
             ></textarea>
         </div>
           
@@ -42,6 +44,7 @@
                 class="form-control"
                 list="datalistOptions"
                 id="category"
+                name="category"
                 placeholder="Type to search..."
                 />
                 <datalist id="datalistOptions">
@@ -58,16 +61,58 @@
                 <input
                 type="date"
                 class="form-control"
+                name="date"
                 />
             </div>
         </div>
 
         <div class="form-buttons">
-            <button type="button" class="btn btn-primary btn-lg">Add Task</button>
-            <button type="button" class="btn btn-danger btn-lg">Delete</button>
+          <button type="reset" class="btn btn-dark btn-lg">
+            <i class="fas fa-redo"></i>
+            Reset
+          </button>
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="far fa-plus-square"></i>
+            Add Task
+          </button>
         </div>  
         </form>
       </main>
+    </div>
+
+    <div class="sidebar">
+      <header>
+        <h1>
+          List
+        </h1>
+      </header>
+      <% for (let i=0; i<1; i++) { %>
+        <div class="list-item">
+          <div class="d-flex bd-highlight">
+
+            <div class="p-2 flex-fill bd-highlight">
+              <p class="p-1 no-margin">Hello there! My First List item</p>
+
+              <div class="d-flex flex-row">
+                <i class="fas fa-calendar-alt fa-lg p-2"></i>
+                <p class="p-1 no-margin"> 13 Aug 2021</p>
+              </div>
+            </div>
+
+            <div class="p-2 flex-fill bd-highlight">
+              <p class="btn btn-info btn-center">Work</p>
+            </div>
+
+            <div class="p-2 flex-fill bd-highlight">
+              <button type="button" class="btn btn-danger btn-center">
+                <i class="fas fa-trash-alt fa-lg"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      <%}%>
+      
     </div>
 
     <script
